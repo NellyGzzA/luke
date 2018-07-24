@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div style="margin-top: 20px;">
+        <a class="btn-floating btn-large waves-effect waves-light red right" href="{% url 'users:logout' %}">
+            <i class="material-icons">power_settings_new</i>
+        </a>
+    </div>
+    {% block subcontent %}
+    {% endblock %}
+{% endblock %}
