@@ -1,0 +1,11 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "md5$jS2pn9wuAmms$837be036f15f061d5c5d03a77482da11",
+      "email": "test@gmail.com",
+      "username": "test"
+    }
+  }
+]
