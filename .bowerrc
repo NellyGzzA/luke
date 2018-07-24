@@ -1,0 +1,9 @@
+{
+    "name": "luke",
+    "version": "0.0.1",
+    "authors": [
+        "python <python@vincoorbis.com>"
+    ],
+    "description": "Rest api of luke",
+    "directory": "./assets/bower_components/"
+}

@@ -5,7 +5,7 @@ apt-get update
 
 echo "Installing base packages..."
 PACKAGES="build-essential zsh git vim-nox tree htop libjpeg-dev libfreetype6-dev graphviz gettext"
-PACKAGES="$PACKAGES python python-setuptools python-pip python-dev"
+PACKAGES="$PACKAGES python3 python3-setuptools python3-pip python3-dev"
 PACKAGES="$PACKAGES postgresql-9.3 postgresql-server-dev-9.3"
 PACKAGES="$PACKAGES nginx"
 
@@ -43,8 +43,8 @@ cp /tmp/templates/zsh/zshrc /home/vagrant/.zshrc
 
 
 echo "Copying fabfile, tox, environments and bower configs..."
-echo "$(envsubst < /tmp/templates/fabric/fabfile.py)" > /vagrant/fabfile.py           
-echo "$(envsubst < /tmp/templates/tox/tox.ini)" > /vagrant/tox.ini                    
+echo "$(envsubst < /tmp/templates/fabric/fabfile.py)" > /vagrant/fabfile.py
+echo "$(envsubst < /tmp/templates/tox/tox.ini)" > /vagrant/tox.ini
 echo "$(envsubst < /tmp/templates/env/environments.json)" > /vagrant/environments.json
 
 echo "$(envsubst < /tmp/templates/bower/bower.json)" > /vagrant/bower.json
@@ -59,7 +59,7 @@ chsh -s $(which zsh) vagrant
 echo "Configuring virtualenv..."
 VIRTUALENV_DIR=/home/vagrant/env
 
-pip install virtualenv
+pip3 install virtualenv
 
 if [ ! -d "$VIRTUALENV_DIR" ]; then
     mkdir $VIRTUALENV_DIR
@@ -102,9 +102,6 @@ if [ ! -d  "$PROJECT_DIR" ]; then
     cp -r /tmp/templates/django/utils $PROJECT_DIR
     cp -r /tmp/templates/django/core $PROJECT_DIR
     cp -r /tmp/templates/django/api $PROJECT_DIR
-
-    echo "$(envsubst < /tmp/templates/django/api/urls.py)" > $PROJECT_DIR/api/urls.py
-
     chown -R vagrant:vagrant $PROJECT_DIR/..
 fi
 
