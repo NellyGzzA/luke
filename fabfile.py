@@ -119,12 +119,12 @@ def resetdb():
 
 
 @task
-def bower_install(*args, **kwargs):
+def npm_install(*args, **kwargs):
     """
     Installs frontend dependencies with bower.
     """
     with node():
-        run(join('bower install',
+        run(join('npm install',
                  options(**kwargs), arguments(*args)))
 
 
@@ -138,10 +138,10 @@ def bootstrap():
         >>>fab environment:vagrant bootstrap.
     """
     # Build the DB schema and collect the static files.
-    #createdb()
+    createdb()
     migrate()
     collectstatic()
-    bower_install()
+    npm_install()
 
 
 @task
@@ -215,7 +215,7 @@ def runtests():
         >>>fab environment:vagrant runserver.
     """
     with cd('/vagrant'):
-        run('tox')
+        run('tox -r')
 
 
 @task

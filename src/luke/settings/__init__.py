@@ -99,7 +99,7 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.MultiPartParser'
     ),
     'DEFAULT_PAGINATION_CLASS': (
-        'luke.utils.pagination.ProjectDefaultPagination'
+        'rest_framework_json_api.pagination.PageNumberPagination'
     )
 }
 

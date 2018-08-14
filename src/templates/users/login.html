@@ -1,34 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% if form.errors %}
-        <div class="card-panel red darken-1 s3 offset-s3" style="margin-top: 50px;">
-            <span class="white-text">Invalid credentials. <br> Your username and password didn't match. Please try again.</span>
+    <div class="container">
+        {% if form.errors %}
+            <div class="card-panel red darken-1 s3 offset-s3" style="margin-top: 50px;">
+                <span class="white-text">Invalid credentials. <br> Your username and password didn't match. Please try again.</span>
+            </div>
+        {% endif %}
+        <div class="row" style="margin-top: 100px;">
+            <form class="col s6 offset-s3" method="post" action="">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="input-field col s12 invalid">
+                        <i class="material-icons prefix">account_circle</i>
+                        {{ form.username }}
+                        <label for="username">{{ form.username.label_tag }}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">lock</i>
+                        {{ form.password }}
+                        <label for="password">{{ form.password.label_tag }}</label>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light col offset-s9"
+                        type="submit"
+                        name="action"
+                        value="login">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
         </div>
-    {% endif %}
-    <div class="row" style="margin-top: 100px;">
-        <form class="col s6 offset-s3" method="post" action="">
-            {% csrf_token %}
-            <div class="row">
-                <div class="input-field col s12 invalid">
-                    <i class="material-icons prefix">account_circle</i>
-                    {{ form.username }}
-                    <label for="username">{{ form.username.label_tag }}</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">lock</i>
-                    {{ form.password }}
-                    <label for="password">{{ form.password.label_tag }}</label>
-                </div>
-            </div>
-            <button class="btn waves-effect waves-light col offset-s9"
-                    type="submit"
-                    name="action"
-                    value="login">Submit
-                <i class="material-icons right">send</i>
-            </button>
-        </form>
     </div>
 {% endblock %}

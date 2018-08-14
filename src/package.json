@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "angular": "~1.7.3",
+    "@uirouter/angularjs": "1.0",
+    "angular-resource": "1.5.11",
+    "angular-materialize": "0.2.2"
+  }
+}
