@@ -1,11 +1,58 @@
-{% extends "base.html" %}
+{% load static %}
+<html ng-app="luke">
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.min.css-->
+      <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
 
-{% block content %}
-    <div style="margin-top: 20px;">
-        <a class="btn-floating btn-large waves-effect waves-light red right" href="{% url 'users:logout' %}">
-            <i class="material-icons">power_settings_new</i>
-        </a>
-    </div>
-    {% block subcontent %}
-    {% endblock %}
-{% endblock %}
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            .input-field input[type=text].invalid {
+                border-bottom: 1px solid #000;
+                box-shadow: 0 1px 0 0 #000;
+            }
+        </style>
+    </head>
+
+    <body >
+        <div class="container">
+            <div class="fixed-action-btn">
+              <a class="btn-floating btn-large orange darken-3">
+                <i class="large material-icons">menu</i>
+              </a>
+              <ul>
+                  <li><a class="btn-floating green" ui-sref="categories.create"><i class="material-icons">add</i></a></li>
+                  <li><a class="btn-floating blue" ui-sref="categories.index"><i class="material-icons">list</i></a></li>
+                  <li><a class="btn-floating red" href="{% url 'users:logout' %}"><i class="material-icons">power_settings_new</i></a></li>
+              </ul>
+            </div>
+            <div ui-view></div>
+        </div>
+        <!-- angular-->
+        <script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
+        <script src="{% static 'node_modules/angular/angular.min.js' %}"></script>
+        <script src="{% static 'node_modules/@uirouter/angularjs/release/angular-ui-router.min.js' %}"></script>
+        <script src="{% static 'node_modules/angular-resource/angular-resource.min.js' %}"></script>
+        <script src="{% static 'node_modules/angular-materialize/src/angular-materialize.min.js' %}"></script>
+        <!-- main app -->
+        <script type="text/javascript" src="{% static 'angular/app.js' %}"></script>
+        <script type="text/javascript" src="{% static 'angular/commons/factories.js' %}"></script>
+        <!-- categories -->
+        <script type="text/javascript" src="{% static 'angular/categories/controllers.js' %}"></script>
+        <script type="text/javascript" src="{% static 'angular/categories/states.js' %}"></script>
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            var button = document.querySelectorAll('.fixed-action-btn');
+            var options = {
+                direction: 'left',
+                hoverEnabled: false
+             };
+            var instances = M.FloatingActionButton.init(button, options);
+          });
+        </script>
+    </body>
+</html>
