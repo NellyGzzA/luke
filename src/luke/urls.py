@@ -16,8 +16,11 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from luke.api import urls
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^categories/', include('luke.categories.urls')),
-    url(r'^users/', include('luke.users.urls'))
+    url(r'^users/', include('luke.users.urls')),
+    url(r'^api/', include(urls, namespace='api')),
 ]
