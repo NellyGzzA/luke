@@ -23,4 +23,5 @@ def logout_view(request):
     logout(request)
     return redirect('users:login')
 
+
 login_view = LoginView.as_view()
