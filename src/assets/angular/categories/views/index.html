@@ -1,0 +1,41 @@
+<h1>Categories</h1>
+<hr />
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Date created</th>
+                <th>Last updated</th>
+                <th>User</th>
+                <th><div ng-click="vm.changeActive()" >{{ vm.activeText }}</div></th>
+            </tr>
+        </thead>
+       <tr ng-repeat="category in vm.categories">
+           asdfasd
+            <td>{{ category.id }}</td>
+            <td>{{ category.title }}</td>
+            <td>{{ category.createdDate | date:'medium' }}</td>
+            <td>{{ category.lastModified | date:'medium' }}</td>
+            <td>{{ category.user.username }}</td>
+            <td>
+                <span ng-if="category.active">
+                    <i class="material-icons">done</i>
+                </span>
+            </td>
+        </tr>
+    </table>
+    <div class="center">
+        <pagination page="1"
+                    page-size="vm.pageSize"
+                    total="vm.count"
+                    show-prev-next="true"
+                    use-simple-prev-next="false"
+                    dots="..."
+                    hide-if-empty="true"
+                    adjacent="1"
+                    scroll-top="false"
+                    pagination-action="vm.changePage(page)" />
+    </div>
+</div>
