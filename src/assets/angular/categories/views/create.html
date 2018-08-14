@@ -1,0 +1,31 @@
+<div style="margin-top: 50px;">
+    <h4>Create category</h4>
+    <hr />
+    <div class="card-panel light-green lighten-2" ng-show="vm.message" style="margin-top: 50px;">
+        <span class="white-text">{{ vm.message }}</span>
+    </div>
+    <div class="row">
+        <form class="col s8 offset-s2" style="margin-top: 100px;" ng-submit="vm.submitCategory(vm.subject)">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="title" type="text" ng-class="validate" ng-model=vm.title required>
+                    <label for="title">Title</label>
+                    <span ng-repeat="error in vm.errors.title" class="helper-text" data-error="{{ error }}"></span>
+                </div>
+            </div>
+            <p>
+                <label>
+                    <input type="checkbox" ng-class="validate" ng-model=vm.active />
+                    <span>Active</span>
+                    <span id="active-error" class="helper-text" data-error=""></span>
+                </label>
+            </p>
+            <button class="btn waves-effect waves-light col offset-s10"
+                    type="submit"
+                    name="action"
+                    value="login">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+    </div>
+</div>
