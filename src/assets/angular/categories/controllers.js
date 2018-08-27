@@ -47,7 +47,7 @@ app.controller('CategoriesCreateCtrl', function($state, $scope, Category) {
     vm.submitCategory = function(categoryId) {
         var params = {
             'title': vm.title,
-            'active': vm.active ? true : false
+            'active': vm.active
         };
         Category.save(params).$promise.then(function(response) {
             vm.message = 'Categoría guardada correctamente';
