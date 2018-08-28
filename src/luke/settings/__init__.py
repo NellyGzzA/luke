@@ -43,7 +43,8 @@ INSTALLED_APPS = (
     'rest_framework',
     # Other apps
     'luke.users',
-    'luke.categories'
+    'luke.categories',
+    'drf_yasg',
 )
 
 MIDDLEWARE_CLASSES = (
